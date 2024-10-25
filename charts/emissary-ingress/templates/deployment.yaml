@@ -136,6 +136,8 @@ spec:
       - name: wait-for-apiext
         image: istio/kubectl:1.5.10
         imagePullPolicy: IfNotPresent
+        resources:
+          {{- toYaml .Values.waitForApiext.resources | nindent 10 }}
         {{- with .Values.waitForApiext.securityContext }}
         securityContext:
           {{- toYaml . | nindent 10 }}
